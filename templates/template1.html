@@ -1,19 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1d4ed8;
+        }
+
+        .preview {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .preview img {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        p {
+            margin-top: 15px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
+
     <h1>Upload an Image</h1>
     <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="image">
+        <input type="file" name="image" required>
         <input type="submit" value="Upload">
     </form>
 
     {% if filename %}
         <p>Uploaded: {{ filename }}</p>
-        <img src="/uploads/{{ filename }}" width="300">
+        <div class="preview">
+            <div>
+                <p>Original</p>
+                <img src="/uploads/{{ filename }}">
+            </div>
+            <div>
+                <p>Annotated</p>
+                <img src="{{ new_img }}">
+            </div>
+        </div>
     {% endif %}
+
 </body>
 </html>
