@@ -68,10 +68,10 @@ python app.py
 ```
 galaxy-detector/
 │
-├── app.py                # Main Flask application
+├── flaskAPP.py                # Main Flask application
 ├── templates/
 │   └── index.html
-|   └── index.html          # HTML form for image upload
+|   └── template1..html          # HTML form for image upload
 ├── static/
 │   └── output.jpg        # Annotated result saved here
 ├── venv/                 # (Optional) Virtual environment
