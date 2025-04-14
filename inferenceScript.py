@@ -8,7 +8,7 @@ import cv2
 
 CLIENT = InferenceHTTPClient(
     api_url="https://serverless.roboflow.com",
-    api_key="QTlRHhVnye8bHVCcOApG"
+    api_key="Your_API_Key"
 )
 
 result = CLIENT.infer('image.png', model_id="cmpe258-finalversion/1")
