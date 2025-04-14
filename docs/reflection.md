@@ -19,3 +19,5 @@ Working on the Galaxy Detection Web App was both fun and educational.
 ## 🔁 Overall
 
 This was a great refresher project that helped me put together several skills I’ve picked up over time — and wrap it all up in something cool and space-themed!
+
+Tooms for improvement: improving the css design, integrating the project on robots
