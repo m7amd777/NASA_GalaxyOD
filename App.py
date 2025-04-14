@@ -2,7 +2,6 @@ from flask import Flask, render_template_string, request
 from inference_sdk import InferenceHTTPClient
 import supervision as sv
 import cv2
-import os
 
 app = Flask(__name__)
 
@@ -10,7 +9,7 @@ app = Flask(__name__)
 def predict(image_path):
     CLIENT = InferenceHTTPClient(
         api_url="https://serverless.roboflow.com",
-        api_key="QTlRHhVnye8bHVCcOApG"
+        api_key="Your_API_Key_Here"
     )
 
     result = CLIENT.infer(image_path, model_id="cmpe258-finalversion/1")
