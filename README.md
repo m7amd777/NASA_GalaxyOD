@@ -23,7 +23,7 @@ python --version
 ### ✅ Roboflow Account & API Key
 - Sign up at [https://app.roboflow.com](https://app.roboflow.com)
 - Create a project (e.g., Galaxy Detection)
-- Get your **API key** from your Roboflow dashboard
+- Get your **API key** from your Roboflow dashboard, for the assignment API KEY is attached to save time
 
 ### ✅ Virtual Environment (Recommended)
 Set up a virtual environment:
@@ -38,7 +38,7 @@ source venv/bin/activate     # On Windows: venv\Scripts\activate
 
 Install the required Python packages:
 ```bash
-pip install flask supervision opencv-python
+pip install flask supervision opencv-python os inference_sdk
 ```
 
 ---
@@ -50,7 +50,7 @@ pip install flask supervision opencv-python
 ```bash
 python app.py
 ```
-3. Open your browser and go to:  
+3. Open your browser and go to the port that shows in the terminal for you, example:  
 [http://localhost:5000](http://localhost:5000)
 
 ---
@@ -66,13 +66,17 @@ python app.py
 ## 📂 Project Structure
 
 ```
-galaxy-detector/
+NASA_GALAXY_OD/
 │
-├── flaskAPP.py                # Main Flask application
+├── docs/
+│   └── reflection.md            # Main Flask application
 ├── templates/
 │   └── index.html
-|   └── template1..html          # HTML form for image upload
-├── static/
+|   └── template1..html          # HTML form for image upload, just to showcase the process
+├── app.py                # main app
+├── flaskApp.py           # showcase sample of flask app
+├── inferenceScript.py    # showcase the script of the inference
+├── uploads/
 │   └── output.jpg        # Annotated result saved here
 ├── venv/                 # (Optional) Virtual environment
 └── README.md             # Project documentation
