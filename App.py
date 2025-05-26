@@ -10,16 +10,16 @@ app = Flask(__name__)
 def predict(image_path):
     CLIENT = InferenceHTTPClient(
         api_url="https://serverless.roboflow.com",
-        api_key="Your API Key Here",
+        api_key="PLACE YOUR API KEY HERE",
     )
 
     result = CLIENT.infer(image_path, model_id="cmpe258-finalversion/1")
-    print(result)
+    print(result, "result")
 
 
     labels = [item["class"] for item in result["predictions"]]
 
-    print(labels)
+    print(labels, "labels")
 
     detections = sv.Detections.from_inference(result)
     label_annotator = sv.LabelAnnotator()
@@ -40,7 +40,7 @@ def predict(image_path):
     #saving the image itself using opencv
     cv2.imwrite("uploads/Annotated.png", annotated_image)
 
-    return "/uploads/Annotated.png"
+    return "/uploads/Annotated.png",labels
 
 
 UPLOAD_FOLDER = 'uploads'
@@ -134,10 +134,11 @@ HTML_FORM = '''
                 <img src="/uploads/{{ filename }}">
             </div>
             <div>
-                <p>Annotated</p>
+                <p>Predicted Boxes</p>
                 <img src="{{ new_img }}">
             </div>
         </div>
+        <p> Galaxies Detected : {{ labels }}</p>
     {% endif %}
 
 </body>
@@ -149,15 +150,16 @@ HTML_FORM = '''
 def upload_image():
     filename = None
     annotatedshi = None
+    labels = []
     if request.method == 'POST':
         image = request.files['image']
         if image:
             filename = image.filename
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
-            annotatedshi= predict(image_path)
+            annotatedshi,labels= predict(image_path)
 
-    return render_template_string(HTML_FORM, filename=filename, new_img=annotatedshi)
+    return render_template_string(HTML_FORM, filename=filename, new_img=annotatedshi, labels=labels)
 
 # Serve uploaded files
 from flask import send_from_directory
