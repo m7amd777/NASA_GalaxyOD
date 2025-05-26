@@ -88,7 +88,7 @@ NASA_GALAXY_OD/
 
 Upload an image of deep space, and get back a result like this (example image after detection):
 
-![Example Output](static/output.jpg)
+![Example Output](resources/image.png)
 
 ---
 
